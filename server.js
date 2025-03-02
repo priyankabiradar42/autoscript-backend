@@ -7,6 +7,10 @@ const PORT = 5000;
 app.use(express.json()); // Parse JSON body
 app.use(cors()); // Allow requests from frontend
 
+app.get('/health', (req, res) => {
+    res.json({ status: "success", message: "Backend is running!" });
+});
+
 app.post("/upload", (req, res) => {
     const { fileContent, fileName } = req.body;
     if (!fileContent || !fileName) {
